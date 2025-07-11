@@ -21,11 +21,11 @@ import {
 
 // ================================================================================>> Custom Library
 // App
-import { mockApiServices } from 'app/mock-api';
-import { appRoutes } from 'app/routes';
+import { mockApiServices } from './mock-api';
+import { appRoutes } from './app.routes';
 
 // Core
-import { provideAuth } from 'app/core/auth/provider';
+import { provideAuth } from './core/auth/provider';
 import { provideIcons } from 'app/core/icons/provider';
 import { provideTransloco } from 'app/core/transloco/provider';
 
@@ -35,10 +35,10 @@ import { provideServiceWorker } from '@angular/service-worker';
 
 const MY_DATE_FORMAT = {
   parse: {
-    dateInput: 'DD-MM-YYYY', // this is how your date will be parsed from Input
+    dateInput: 'DD-MM-YYYY',
   },
   display: {
-    dateInput: 'DD-MM-YYYY', // this is how your date will get displayed on the Input
+    dateInput: 'DD-MM-YYYY',
     monthYearLabel: 'MMM YYYY',
     dateA11yLabel: 'LL',
     monthYearA11yLabel: 'MMM YYYY',
