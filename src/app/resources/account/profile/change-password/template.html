@@ -1,0 +1,51 @@
+<div class="w-full">
+    <div mat-dialog-title class="min-h-14 w-full flex gap-2 justify-between items-center py-2 pl-5 pr-2.5 border-b">
+        <div class="flex flex-1 items-center text-slate-500">
+            <h1 class="text-2xl">ផ្លាស់ប្តូរលេខសម្ងាត់</h1>
+        </div>
+        <div class="flex items-center cursor-pointer"><mat-icon class="-mb-0.5" [svgIcon]="'heroicons_outline:x-mark'" (click)="closeDialog()"></mat-icon>
+        </div>
+    </div>
+    <div class="p-5">
+        <form [formGroup]="changePasswordForm">
+    
+            <div class="grid grid-cols-1 md-form-field-appearance-outline">
+    
+                <div class="md-form-field-appearance-outline">
+    
+                    <div class="grid">
+                        <mat-form-field appearance="outline">
+                            <mat-label>លេខសម្ងាត់ចាស់</mat-label>
+                            <input matInput [formControlName]="'old_password'" type="password">
+                            <mat-error>ទាមទារលេខសម្ងាត់ចាស់</mat-error>
+                        </mat-form-field>
+                    </div>
+    
+                    <div class="grid">
+                        <mat-form-field appearance="outline">
+                            <mat-label>លេខសម្ងាត់ថ្មី</mat-label>
+                            <input matInput [formControlName]="'new_password'" type="password">
+                            <mat-error>ទាមទារលេខសម្ងាត់ថ្មី</mat-error>
+                        </mat-form-field>
+                    </div>
+    
+                    <div class="grid">
+                        <mat-form-field appearance="outline">
+                            <mat-label>បញ្ជាក់លេខសម្ងាត់ថ្មី</mat-label>
+                            <input matInput [formControlName]="'confirm_password'" type="password">
+                            <mat-error>ទាមទារបញ្ជាក់លេខសម្ងាត់ថ្មី</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <!-- Submit button -->
+            <div class="flex justify-end gap-5">
+                <button type="button" 
+                    class="w-full md:w-fit min-w-15 helpers-mat-button-md" mat-flat-button (click)="submit()">
+                    <span>រក្សាទុក</span>
+                </button>
+            </div>
+    
+        </form>
+    </div>
+</div>

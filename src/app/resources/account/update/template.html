@@ -1,0 +1,54 @@
+<form [formGroup]="updateForm" class="out-create-section md-form-field-appearance-outline">
+    <div class="w-full min-h-14 max-h-14 flex justify-start items-center py-2 pl-5 pr-2.5">
+        <button mat-icon-button class="cursor-pointer" (click)="closeDialog()">
+            <mat-icon [svgIcon]="'heroicons_outline:arrow-small-left'"></mat-icon>
+        </button>
+        <div class="flex text-slate-500">
+            <h1 class="text-3xl">កែប្រែគណនី</h1>
+        </div>
+    </div>
+    <div class="out-create-body px-4 pb-2">
+        <div class="out-create-content border-t pt-4">
+            <!-- upload -->
+                    <div class="w-full flex flex-col items-center">
+                        <div class="pr-0 md:pr-5 w-full flex items-center justify-center overflow-hidden relative">
+                            <app-portrait [disabled]="isLoading" [mode]="'UPLOAD'" [title]="'បញ្ចូលរូបភាព'"
+                                [src]="src" [index]="'image'" (srcChange)='srcChange($event)'></app-portrait>
+                        </div>
+                    </div>
+                <!-- form -->
+                <div class="mt-4 flex flex-col">
+                    <div class="grid grid-cols-1 lg:grid-cols-1 gap-0 lg:gap-5 ">
+                        <mat-form-field>
+                            <mat-label>ឈ្មោះជាភាសាខ្មែរ</mat-label>
+                            <input matInput [formControlName]="'lattin_name'" placeholder="បញ្ចូលឈ្មោះជាភាសាខ្មែរ*">
+                            <mat-error>សូមបញ្ចូលឈ្មោះជាភាសាខ្មែរ</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-1 gap-0 lg:gap-5 pb-5">
+                        <mat-radio-group [formControlName]="'sex_id'">
+                            <mat-radio-button *ngFor="let option of sexOptions" [value]="option.id">{{ option.name }}</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-5">
+                        <mat-form-field>
+                            <mat-label>លេខទូរស័ព្ទ</mat-label>
+                            <input matInput [formControlName]="'phone'" placeholder="បញ្ចូលលេខទូរស័ព្ទ*">
+                            <mat-error>សូមបញ្ចូលលេខទូរស័ព្ទ</mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>អុីម៉ែល</mat-label>
+                            <input matInput [formControlName]="'email'" type="email" placeholder="បញ្ចូលអុីម៉ែល*">
+                            <mat-error>សូមបញ្ចូលអុីម៉ែល</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+        </div>
+        <div class="flex justify-end px-1">
+            <button class="helpers-mat-button-md" mat-flat-button [disabled]="updateForm.invalid || saving">
+                <span *ngIf="!updateForm.disabled">រួចរាល់</span>
+                <mat-progress-spinner *ngIf="updateForm.disabled" [diameter]="24" [mode]="'indeterminate'"></mat-progress-spinner>
+            </button>
+        </div>
+    </div>
+</form>

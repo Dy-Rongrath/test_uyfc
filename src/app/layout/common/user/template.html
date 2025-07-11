@@ -1,0 +1,32 @@
+<div class="flex gap-2">
+    <!-- <div class="flex flex-col">
+        <p class="text-md text-slate-600">{{user.name}}</p>
+        <span class="text-sm text-slate-400">{{ getUserRole() }}</span>
+    </div> -->
+    <button mat-icon-button [matMenuTriggerFor]="userActions">
+        <span class="relative border min-w-10 max-w-10 min-h-10 max-h-10 flex items-center justify-center rounded-full">
+            <img *ngIf="user?.avatar" alt="avatar"
+                class="border-2 border-blue-500 min-w-10 max-w-10 min-h-10 max-h-10 object-cover rounded-full"
+                [src]="fileUrl + '/' + user?.avatar">
+            <mat-icon *ngIf="!user?.avatar" [svgIcon]="'heroicons_outline:user-circle'"></mat-icon>
+        </span>
+    </button>
+</div>
+
+<mat-menu [xPosition]="'before'" #userActions="matMenu" class="absolute top-[8px] -right-1 py-0">
+    <button mat-menu-item [routerLink]="['account/profile']">
+        <mat-icon [svgIcon]="'heroicons_outline:user-circle'"></mat-icon>
+        <span class="text-slate-500">គណនី</span>
+    </button>
+    
+    <button mat-menu-item [disabled]="disableRoleSwitch" (click)="viewSwitchRole()">
+        <mat-icon svgIcon="mat_solid:manage_accounts"></mat-icon>
+        <span class="text-slate-500 -mb-0.5">ប្តូរតួរនាទី</span>
+    </button>
+
+    <mat-divider class="my-0"></mat-divider>
+    <button mat-menu-item (click)="signOut()">
+        <mat-icon [svgIcon]="'feather:log-out'"></mat-icon>
+        <span class="text-slate-500">ចាកចេញ</span>
+    </button>
+</mat-menu>

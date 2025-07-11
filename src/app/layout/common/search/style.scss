@@ -1,0 +1,61 @@
+::ng-deep .search-bar {
+    .transition-border {
+        transition: border-radius 0.1s ease-in !important;
+    }
+    .custom-icon-button {
+        height: 34px !important;
+        min-height: 34px !important;
+        max-height: 34px !important;
+        width: 34px !important;
+        min-width: 34px !important;
+        max-width: 34px !important;
+    }
+}
+
+.search-section {
+    transition: all 0.2s linear;
+    min-height: 250px;
+    max-height: 50dvh;
+    overflow: auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.05);
+
+    .content-form-search {
+        padding: 0.75rem 0.75rem 0;
+    }
+
+    .bottom-form-search {
+        background-color: #fff !important;
+        position: sticky;
+        z-index: 99;
+        bottom: 0;
+        padding: 0.35rem 0.75rem 0.65rem;
+    }
+}
+
+.input-filter {
+    transition: all 0.2s ease-in;
+    width: 100%;
+    height: 100%;
+    text-align: start;
+    cursor: default;
+    overflow: auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+.search-section::-webkit-scrollbar,
+.input-filter::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+::placeholder {
+    color: rgb(100 116 139) !important;
+}
+
+::-ms-input-placeholder {
+    color: rgb(100 116 139) !important;
+}

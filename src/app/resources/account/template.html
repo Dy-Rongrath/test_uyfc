@@ -1,0 +1,77 @@
+<div class="container-account-section">
+    <mat-drawer-container class="flex-auto sm:h-full rounded-2xl">
+
+        <!-- Drawer -->
+        <mat-drawer class="w-full sm:w-[234px] overflow-hidden bg-white border-0" [autoFocus]="false" [mode]="drawerMode" [opened]="drawerOpened" #drawer>
+
+            <!-- Panel links -->
+            <div class="flex flex-col p-3 h-full gap-3">
+                <div class="ahto">
+                    <ng-container *ngFor="let panel of panels; trackBy: trackByFn">
+                        <div class="flex p-3 py-2.5 mb-1 cursor-pointer rounded-lg" [ngClass]="{'hover:bg-gray-100': !selectedPanel || selectedPanel !== panel.id,
+                                        'bg-primary-50': selectedPanel && selectedPanel === panel.id}"
+                            (click)="goToPanel(panel.id)">
+                            <mat-icon [ngClass]="{'text-hint': !selectedPanel || selectedPanel !== panel.id,
+                                            'text-slate-700': selectedPanel && selectedPanel === panel.id}"
+                                [svgIcon]="panel.icon"></mat-icon>
+                            <div class="ml-3">
+                                <div class="font-medium leading-6"
+                                    [ngClass]="{'text-slate-700': selectedPanel && selectedPanel === panel.id}">
+                                    {{panel.title}}
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </mat-drawer>
+
+        <!-- Drawer content -->
+        <mat-drawer-content class="flex flex-col bg-white lg:ml-[235px]">
+
+            <!-- Main -->
+            <div class="flex-auto overflow-hidden bg-slate-100">
+
+                <!-- Panel header -->
+                <div class="flex items-center min-h-14 max-h-15 pl-5 bg-white">
+
+                    <!-- Drawer toggle -->
+                    <button class="lg:hidden -ml-2" mat-icon-button (click)="drawer.toggle()">
+                        <mat-icon [svgIcon]="'heroicons_outline:bars-3'"></mat-icon>
+                    </button>
+
+                    <!-- Panel title -->
+                    <div class="flex items-center justify-between w-full border-b pb-3 mr-9 pt-3">
+                        <div class="flex items-center gap-2">
+                            <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_outline:home'"></mat-icon>
+                            <span class="text-xl">គណនី</span>
+                        </div>
+                        <!-- <div class="flex items-center gap-2">
+                            <button mat-icon-button class="cursor-pointer" (click)="onUpdate()">
+                                <mat-icon class="icon-size-6" svgIcon="feather:edit"></mat-icon>
+                            </button>
+                            <button mat-icon-button class="cursor-pointer" (click)="onChangePw()">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#64748b"><path d="M280-400q-33 0-56.5-23.5T200-480q0-33 23.5-56.5T280-560q33 0 56.5 23.5T360-480q0 33-23.5 56.5T280-400Zm0 160q-100 0-170-70T40-480q0-100 70-170t170-70q67 0 121.5 33t86.5 87h352l120 120-180 180-80-60-80 60-85-60h-47q-32 54-86.5 87T280-240Zm0-80q56 0 98.5-34t56.5-86h125l58 41 82-61 71 55 75-75-40-40H435q-14-52-56.5-86T280-640q-66 0-113 47t-47 113q0 66 47 113t113 47Z"/></svg>
+                            </button> 
+                        </div> -->
+                    </div>
+                </div>
+
+                <!-- Load settings panel -->
+                <ng-container [ngSwitch]="selectedPanel">
+                    <!-- Account -->
+                    <ng-container *ngSwitchCase="'profile'">
+                        <account-profile [src]="src" [user]="user"></account-profile>
+                    </ng-container>
+                    <!-- Security -->
+                    <ng-container *ngSwitchCase="'note'">
+                        <account-security></account-security>
+                    </ng-container>
+                </ng-container>
+
+            </div>
+
+        </mat-drawer-content>
+
+    </mat-drawer-container>
+</div>

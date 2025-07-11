@@ -1,13 +1,43 @@
 <!doctype html>
 <html lang="en">
+
 <head>
+  <link rel="icon" href="assets/images/logo/uyfc.jpg" type="image/png">
+  <title>ប្រព័ន្ធគ្រប់គ្រងទិន្នន័យ ស.ស.យ.ក ខេត្តកំពង់ចាម</title>
   <meta charset="utf-8">
-  <title>Web</title>
+  <meta name="description" content="ប្រព័ន្ធគ្រប់គ្រងការដាក់ស្នើរសុំទិន្នការ និង រក្សាទុកឯកសារប្រកបដោយសុវត្ថិភាព">
+  <meta name="viewport"
+    content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover">
   <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/logo/uyfc.jpg">
+
+  <!-- Icon fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <!-- Splash screen styles -->
+  <link rel="stylesheet" href="assets/styles/splash-screen.css">
+
+  <script async defer src="https://apis.google.com/js/api.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
 </head>
+
 <body>
+
+  <!-- Splash screen -->
+  <helpers-splash-screen class="bg-white">
+    <img src="assets/images/logo/uyfc.jpg" alt="uyfc logo">
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+  </helpers-splash-screen>
+
+  <!-- App root -->
   <app-root></app-root>
+
 </body>
+
 </html>

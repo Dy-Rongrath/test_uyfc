@@ -1,0 +1,16 @@
+<div class="card">
+    <div class="tag" [style.background-color]="tagBackgroundColor"> <!-- Apply dynamic background color -->
+        <p class="-rotate-45 absolute -top-[10px] left-2 -mt-[70px] text-center text-lg text-white">{{ title }}</p>
+    </div>
+    <div class="picture-container -ml-5" (click)="selectFile()">
+        <div class="picture" [style.border-color]="imageBorderColor"> <!-- Apply dynamic border color -->
+            <img class="portrait" [src]="src"/>
+            <a [disabled]="disabled" (click)="!disabled && remove()" *ngIf="delete"
+                class="absolute right-5 top-5 custom-icon-button" mat-icon-button>
+                <mat-icon class="text-white icon-size-5" svgIcon="mat_outline:delete_outline"></mat-icon>
+            </a>
+        </div>
+    </div>
+    <div class="name">{{ name }}</div>
+</div>
+    

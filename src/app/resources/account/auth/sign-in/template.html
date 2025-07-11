@@ -1,0 +1,57 @@
+<div class="signin-section">
+    <div class="signin-container ">
+        <div class="signin-content w-full">
+
+            <img class="w-30 h-30 rounded-2xl" src="assets/images/logo/uyfc.jpg" alt="logo-edvise">
+            <h1 class="text-center text-[30px] pt-2 font-semibold text-[#1D1761]">ប្រព័ន្ធគ្រប់គ្រងទិន្នន័យ ស.ស.យ.ក ខេត្តកំពង់ចាម</h1>
+
+            <h1 class="text-center font-semibold text-[25px] text-[#7A7A7A] opacity-80 pt-5">ជំនាន់ទី២</h1>
+
+            <form class="lg-form-field-appearance-outline p-6 pt-5 transition-all" [formGroup]="signInForm">
+
+                <mat-form-field appearance="outline" class="w-full">
+                    <mat-label>លេខទូរស័ព្ទ</mat-label>
+                    <input matInput id="phoneInput" [formControlName]="'phone'" placeholder="សូមបញ្ចូលលេខទូរស័ព្ទ">
+                    <mat-icon matSuffix svgIcon="mat_outline:smartphone"></mat-icon>
+                    <mat-error *ngIf="signInForm.get('phone').hasError('required')">
+                        សូមបញ្ចូលលេខទូរស័ព្ទ
+                    </mat-error>
+                    <mat-error *ngIf="signInForm.get('phone').hasError('pattern')">
+                        សូមបញ្ចូលលេខទូរស័ព្ទឲ្យបានត្រឹមត្រូវ
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="w-full">
+                    <mat-label>លេខសម្ងាត់</mat-label>
+                    <input id="password" matInput type="password" [formControlName]="'password'" #passwordField
+                        placeholder="សូមបញ្ចូលលេខសំងាត់">
+                    <button mat-icon-button type="button" class="-top-0.5"
+                        (click)="passwordField.type === 'password' ? passwordField.type = 'text' : passwordField.type = 'password'"
+                        matSuffix>
+                        <mat-icon class="icon-size-5" *ngIf="passwordField.type === 'password'"
+                            svgIcon="heroicons_outline:eye-slash"></mat-icon>
+                        <mat-icon class="icon-size-5" *ngIf="passwordField.type === 'text'"
+                            svgIcon="heroicons_outline:eye"></mat-icon>
+                    </button>
+                    <mat-error *ngIf="signInForm.get('password').hasError('required')">
+                        សូមបញ្ចូលលេខសម្ងាត់
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- <div class="inline-flex items-center justify-between w-full -mt-14">
+                    <mat-checkbox formControlName="rememberMe"
+                        (change)="onRememberMeChange($event)">ចងចាំ</mat-checkbox>
+                </div> -->
+
+                <button type="submit" class="w-full mt-4 helpers-mat-button-lg" mat-flat-button
+                    [disabled]="signInForm.invalid || isLoading" (click)="signIn()">
+                    <span *ngIf="!isLoading">ចូលប្រព័ន្ធ</span>
+                    <mat-progress-spinner *ngIf="isLoading" [diameter]="24"
+                        [mode]="'indeterminate'"></mat-progress-spinner>
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+</div>

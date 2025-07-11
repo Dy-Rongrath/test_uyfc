@@ -1,0 +1,4 @@
+<div class="circle-picture" (click)="selectFile()">
+    <img class="portrait img-center rounded-xl border" [src]="src" alt="Portrait" />
+    <input [id]="id" class="portrait-file" type="file" (change)="fileChangeEvent($event)" />
+</div>

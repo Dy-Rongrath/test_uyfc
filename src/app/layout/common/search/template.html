@@ -1,0 +1,147 @@
+<div
+    class="search-bar flex justify-start items-center absolute top-0 min-h-14 max-h-15 left-16 md:left-0 w-[60%]">
+    <button #buttonElement
+        class="min-h-10 transition-border max-h-10 flex items-center border-white rounded-lg bg-white relative"
+        [ngClass]="{'rounded-b-none bg-slate-200 mx-[3px] outline outline-white pl-[5px]': onFocus}" [class.pl-2.5]="!onFocus">
+        <mat-icon svgIcon="heroicons_outline:magnifying-glass"></mat-icon>
+        <input #inputFilter autocomplete="off" id="input-filter" placeholder="ស្វែងរកឯកសារ..." [(ngModel)]="filter"
+            (keyup)="filters()" (focus)="filters()" (keyup.enter)="filterByKey(filter)"
+            class="w-full h-[40px] sm:w-80 md:90 xl:w-100 px-2">
+        <div class="min-w-8">
+            <a (click)="clear($event)" *ngIf="filter != ''">
+                <mat-icon class="icon-size-5 mt-1.5" svgIcon="heroicons_outline:x-mark"></mat-icon>
+            </a>
+        </div>
+        <button mat-icon-button class="mr-1 custom-icon-button" (click)="componentToggle()">
+            <mat-icon class="icon-size-6" svgIcon="heroicons_outline:adjustments-horizontal"></mat-icon>
+        </button>
+
+        <div @zoomIn class="search-section absolute overflow-x-hidden w-full left-0 top-[42px] z-[120] cursor-default"
+            *ngIf="display">
+            <form class="content-form-search sm-form-field-appearance-outline" [formGroup]="searchForm">
+                <div class="w-full flex mb-4 items-center">
+                    <span class="min-w-32 text-left pl-2">ប្រភេទលំហូរ</span>
+                    <mat-form-field appearance="outline" class="w-full">
+                        <mat-select formControlName="cat_id">
+                            <mat-option [value]="0">ទាំងអស់</mat-option>
+                            <ng-container *ngIf="setup?.categories">
+                                <ng-container *ngFor="let category of setup.categories;">
+                                    <mat-option (click)="$event.stopPropagation()"
+                                        [value]="category.id">{{category.name}}</mat-option>
+                                </ng-container>
+                            </ng-container>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="w-full flex mb-4 items-center">
+                    <span class="min-w-32 text-left pl-2">អង្គភាព</span>
+                    <mat-form-field appearance="outline" class="w-full">
+                        <mat-select formControlName="org_id">
+                            <mat-option [value]="0">ទាំងអស់</mat-option>
+                            <ng-container *ngIf="setup?.organization">
+                                <ng-container *ngFor="let org of setup.organization;">
+                                    <mat-option (click)="$event.stopPropagation()"
+                                        [value]="org.id">{{org.name}}</mat-option>
+                                </ng-container>
+                            </ng-container>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="w-full flex mb-4 items-center">
+                    <span class="min-w-32 text-left pl-2">ប្រភេទឯកសារ</span>
+                    <mat-form-field appearance="outline" class="w-full">
+                        <mat-select formControlName="type_id">
+                            <mat-option [value]="0">ទាំងអស់</mat-option>
+                            <ng-container *ngIf="setup?.types">
+                                <ng-container *ngFor="let type of setup.types;">
+                                    <mat-option (click)="$event.stopPropagation()"
+                                        [value]="type.id">{{type.name}}</mat-option>
+                                </ng-container>
+                            </ng-container>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="w-full flex mb-4 items-center">
+                    <span class="min-w-32 text-left pl-2">ពាក្យគន្លឹះ</span>
+                    <mat-form-field appearance="outline" class="w-full">
+                        <mat-select formControlName="tag_id">
+                            <mat-option [value]="0">ទាំងអស់</mat-option>
+                            <ng-container *ngIf="setup?.tags">
+                                <ng-container *ngFor="let tag of setup.tags;">
+                                    <mat-option (click)="$event.stopPropagation()"
+                                        [value]="tag.id">{{tag.name}}</mat-option>
+                                </ng-container>
+                            </ng-container>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="w-full flex mb-1 items-center">
+                    <span class="min-w-32 text-left pl-2">កាលបរិច្ឆេទ</span>
+                    <mat-form-field appearance="outline" class="w-full">
+                        <mat-date-range-input [rangePicker]="datepicker">
+                            <input #inputElement matStartDate [formControlName]="'start_date'" placeholder="ចាប់ពីថ្ងៃ">
+                            <input #inputElement matEndDate [formControlName]="'end_date'" placeholder="ដល់ថ្ងៃ">
+                        </mat-date-range-input>
+                        <mat-datepicker-toggle matSuffix [for]="datepicker">
+                        </mat-datepicker-toggle>
+                        <mat-date-range-picker #datepicker></mat-date-range-picker>
+                    </mat-form-field>
+                </div>
+            </form>
+            <div class="h-16 flex items-center justify-end gap-3 bottom-form-search">
+                <button (click)="roleBack()" class="helpers-mat-button-sm" mat-stroked-button>
+                    <span>កំណត់ឡើងវិញ</span>
+                </button>
+                <button class="helpers-mat-button-sm" mat-flat-button (click)="filterByKey(filter)">
+                    <span>ស្វែងរកឯកសារ</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="input-filter absolute overflow-x-hidden rounded-t-none outline-white left-0 top-11 z-[120] h-0"
+            [ngClass]="{'outline': onFocus}" [ngStyle]="{'min-height.px': onFocus ? minHeight : 0}"
+            [class.h-full]="onFocus">
+            <div class="flex flex-col" *ngIf="!isFilter; else filterTemplate">
+                <div *ngFor="let item of histories">
+                    <div class="flex items-center justify-between px-3 mt-2">
+                        <button (click)="filterByKey(item)" class="h-8 w-full flex items-center gap-2">
+                            <mat-icon class="icon-size-5" svgIcon="mat_outline:history"></mat-icon>
+                            <span class="pt-0.5">{{item}}</span>
+                        </button>
+                        <button class="remove-history" (click)="removeHistory(item, $event)">
+                            <mat-icon class="icon-size-5" svgIcon="heroicons_outline:x-mark"></mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <mat-divider *ngIf="histories.length" class="mt-2"></mat-divider>
+                <div class="flex justify-between gap-4 p-4">
+                    <button (click)="filterByKey('type:លំហូរការងារ')" class="w-full helpers-mat-button-sm"
+                        mat-stroked-button>
+                        លំហូរការងារ
+                    </button>
+                    <button (click)="filterByKey('type:ឯកសារខ្ញុំ')" class="w-full helpers-mat-button-sm"
+                        mat-stroked-button>
+                        ឯកសារខ្ញុំ
+                    </button>
+                    <button (click)="filterByKey('type:ឯកសារចែករំលែក')" class="w-full helpers-mat-button-sm"
+                        mat-stroked-button>
+                        ឯកសារចែករំលែក
+                    </button>
+                </div>
+            </div>
+            <ng-template #filterTemplate>
+                <div class="flex flex-col">
+                    <ng-container *ngFor="let item of filtersData">
+                        <button (click)="filterByItem(item)" class="px-3 h-8 mt-2 flex items-center gap-2">
+                            <mat-icon [svgIcon]="item?.type == 'file' ? 'feather:file' : 'mat_solid:folder'"></mat-icon>
+                            <p class="pt-0.5 truncate">{{item?.title}}</p>
+                        </button>
+                    </ng-container>
+                    <ng-container *ngIf="!filtersData.length && isFilter">
+                        <p class="px-3 py-2">No recent items match your search</p>
+                    </ng-container>
+                </div>
+            </ng-template>
+        </div>
+    </button>
+</div>

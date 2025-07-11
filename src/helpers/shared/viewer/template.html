@@ -1,0 +1,22 @@
+<div mat-dialog-title class="custom-dialog-title">
+    <div class="flex w-full justify-between overflow-hidden">
+        <div class="truncate px-3 pt-2">
+            {{data.file.name}}
+        </div>
+        <button mat-icon-button [matDialogClose]="false">
+            <mat-icon class="text-secondary" [svgIcon]="'heroicons_outline:x-mark'"></mat-icon>
+        </button>
+    </div>
+</div>
+<mat-dialog-content class="custom-priview-pdf rounded-xl">
+    <ng-container *ngIf="data.type && data.type.startsWith('image/')">
+        <div class="aspect-[9/6] w-full bg-white rounded-md overflow-hidden" style="height: 700px">
+            <img class="object-contain h-full" [src]="data.url"
+                alt="invalid image uri">
+        </div>
+    </ng-container>
+    <ng-container *ngIf="data.type === 'application/pdf'">
+        <pdf-viewer [src]="data.url" [render-text]="true" [original-size]="false"
+            style="width: 1024px; height: 1448px"></pdf-viewer>
+    </ng-container>
+</mat-dialog-content>

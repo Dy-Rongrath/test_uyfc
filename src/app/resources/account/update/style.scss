@@ -1,0 +1,23 @@
+.out-create-section {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.out-create-body {
+    flex: 1;
+    overflow: auto;
+}
+
+.out-create-content {
+    padding-bottom: 0; /* Ensuring no extra padding at the bottom */
+}
+
+.min-h-14 {
+    min-height: 3.5rem; /* Adjust as necessary */
+}
+
+.max-h-14 {
+    max-height: 3.5rem; /* Adjust as necessary */
+}

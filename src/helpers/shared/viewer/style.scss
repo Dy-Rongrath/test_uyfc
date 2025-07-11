@@ -1,0 +1,23 @@
+::ng-deep .custom-priview-pdf {
+    .ng2-pdf-viewer-container {
+        overflow-x: hidden !important;
+    }
+    .ng2-pdf-viewer-container::-webkit-scrollbar {
+        width: 0 !important;
+        height: 0 !important;
+    }
+}
+
+.mat-mdc-dialog-title.mdc-dialog__title.custom-dialog-title {
+    padding: 0 !important;
+}
+
+.mat-mdc-dialog-content.mdc-dialog__content.custom-priview-pdf {
+    padding: 0 !important;
+    min-height: 80vh !important;
+}
+
+.mat-mdc-dialog-content.mdc-dialog__content.custom-priview-pdf::-webkit-scrollbar {
+    width: 0 !important;
+    height: 0 !important;
+}

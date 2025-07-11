@@ -1,0 +1,73 @@
+.user-profile-section {
+    width: 100%;
+    height: calc(100dvh - 4.25rem) !important;
+    overflow: auto;
+}
+
+::ng-deep .side-dialog { 
+    .mat-mdc-dialog-surface.mdc-dialog__surface {
+        border-radius: 0 !important;
+    }
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 620px;
+    min-height: 310px;
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid #d5dbe1c5;
+    position: relative;
+}
+
+.tag_img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-top: 100px solid #3c82f6;
+    border-top-left-radius: 12px;
+    border-right: 100px solid transparent;
+    font-size: 16px;
+}
+
+.picture-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.picture {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    border: 4px solid #3c82f6;
+}
+
+.portrait {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.portrait-file {
+    display: none;
+}
+
+.name {
+    margin-top: 10px;
+    color: #333;
+}

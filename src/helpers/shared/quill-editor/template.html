@@ -1,0 +1,26 @@
+<form [formGroup]="reviewForm">
+    <quill-editor class="w-full max-w-120" [formControlName]="'body'" [bounds]="'self'" [modules]="quillModules"
+        placeholder="សូមបញ្ចូលមតិយោបល់"></quill-editor>
+</form>
+
+<style>
+    /* ::ng-deep .ql-toolbar.ql-snow {
+        border: unset !important;
+        border-top: 1px solid #7A7A7A !important;
+        border-radius: unset !important;
+    } */
+
+    ::ng-deep .ql-container {
+        min-height: 96px !important;
+    }
+
+    ::ng-deep .ql-editor {
+        min-height: 96px !important;
+    }
+
+    ::ng-deep .ql-container {
+        /* border: unset !important; */
+        box-shadow: unset !important;
+        /* border-radius: unset !important; */
+    }
+</style>

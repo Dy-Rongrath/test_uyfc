@@ -1,0 +1,19 @@
+<div class="security-content bg-white rounded-xl border-t-8 border-l-8 border-slate-100">
+    <mat-tab-group #tabGroup (selectedIndexChange)="tabChanged($event)">
+        <mat-tab label="លេខសម្ងាត់">
+            <ng-template matTabContent>
+                <security-change-password></security-change-password>
+            </ng-template>
+        </mat-tab>
+        <mat-tab label="2-Step Verification">
+            <ng-template matTabContent>
+                <security-two-factor></security-two-factor>
+            </ng-template>
+        </mat-tab>
+        <mat-tab label="Logs">
+            <ng-template matTabContent>
+                <security-logs></security-logs>
+            </ng-template>
+        </mat-tab>
+    </mat-tab-group>
+</div>

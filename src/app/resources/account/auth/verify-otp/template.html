@@ -1,0 +1,57 @@
+<div class="verify-section">
+
+    <div class="verify-container">
+        <div class="verify-content w-full">
+            <img class="w-22 h-22" src="assets/images/logo/uyfc.jpg" alt="uyfc">
+            <h1 class="text-center font-semibold text-[25px] text-[#7A7A7A] opacity-80 pt-5">ផ្ទៀងផ្ទាត់គណនី</h1>
+            <p class="text-center px-6 pt-5 text-[#7A7A7A]">សូមពិនិត្យមើលប្រអប់សាររបស់អ្នក</p>
+            <div class="w-full h-10 flex items-center justify-center gap-2">
+                <p class="text-[#7A7A7A] pt-1">{{phone}}</p>
+                <mat-icon (click)="toLogin()" class="icon-size-4 cursor-pointer" svgIcon="feather:edit"></mat-icon>
+            </div>
+            <div class="p-6 transition-all">
+                <div class="flex gap-3 justify-center mb-5">
+                    <input class="custom-input" #input1 [(ngModel)]="numStr1" (keydown)="keyDownHandler1($event)"
+                        [placeholder]="'X'" [maxlength]="1" />
+                    <input class="custom-input" #input2 [(ngModel)]="numStr2" (keydown)="keyDownHandler2($event)"
+                        [placeholder]="'X'" [maxlength]="1" />
+                    <input class="custom-input" #input3 [(ngModel)]="numStr3" (keydown)="keyDownHandler3($event)"
+                        [placeholder]="'X'" [maxlength]="1" />
+                    <input class="custom-input" #input4 [(ngModel)]="numStr4" (keydown)="keyDownHandler4($event)"
+                        [placeholder]="'X'" [maxlength]="1" />
+                    <input class="custom-input" #input5 [(ngModel)]="numStr5" (keydown)="keyDownHandler5($event)"
+                        [placeholder]="'X'" [maxlength]="1" />
+                    <input class="custom-input" #input6 [(ngModel)]="numStr6" (keydown)="keyDownHandler6($event)"
+                        [placeholder]="'X'" [maxlength]="1" />
+                </div>
+
+                <div class="flex justify-between items-center w-full">
+                    <div>
+                        <ng-container *ngIf="remainingTime > 0">
+                            <span class="text-[#B9110D]">
+                                ពេលវេលានៅសល់ៈ {{ formatTime(remainingTime) }}
+                            </span>
+                        </ng-container>
+                    </div>
+                    <div>
+                        <button 
+                            [class.underline]="reSendOtp"
+                            [class.font-semibold]="reSendOtp" 
+                            [class.text-gray-500]="!reSendOtp"
+                            [disabled]="!reSendOtp" 
+                            (click)="resendOtp()">
+                                ផ្ញើរ OTP ម្តងទៀត
+                        </button>
+                    </div>
+                </div>
+
+                <button class="w-full mt-7 helpers-mat-button-lg" [disabled]="!canSubmit || isLoading" mat-flat-button
+                    (click)="verify() ">
+                    <span *ngIf=" !isLoading ">ផ្ទៀងផ្ទាត់</span>
+                    <mat-progress-spinner *ngIf=" isLoading " [diameter]="24"
+                        [mode]="'indeterminate'"></mat-progress-spinner>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

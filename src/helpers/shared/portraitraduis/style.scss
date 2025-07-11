@@ -1,0 +1,31 @@
+.circle-picture {
+    width: 200px;
+    height: 200px;
+    border: 2px dashed hsl(208, 90%, 49%);
+    border-radius: 100%;
+    padding: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+.circle-picture img {
+    width: 100%;
+    min-width: 256px;
+    min-height: 256px;
+    height: 100%;
+    object-fit: cover;
+}
+
+.circle-picture .portrait-file {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
